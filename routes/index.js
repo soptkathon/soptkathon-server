@@ -11,5 +11,6 @@ router.get("/", function (req, res, next) {
 });
 
 router.use("/user", require("./user"));
+router.use("/music", require("./music"));
 
 module.exports = router;

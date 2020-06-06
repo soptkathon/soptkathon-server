@@ -2,10 +2,10 @@ const pool = require("../modules/pool");
 const table = "user";
 
 const user = {
-  signup: async (id, name, password, salt, email) => {
-    const fields = "id, name, password, salt, email";
-    const questions = `?, ?, ?, ?, ?`;
-    const values = [id, name, password, salt, email];
+  signup: async (id, name, password, salt) => {
+    const fields = "id, name, password, salt";
+    const questions = `?, ?, ?, ?`;
+    const values = [id, name, password, salt];
     const query = `INSERT INTO ${table}(${fields}) VALUES(${questions})`;
     try {
       const result = await pool.queryParamArr(query, values);
@@ -21,7 +21,7 @@ const user = {
     }
   },
   checkUser: async (id) => {
-    const query = `SELECT * FROM ${table} WHERE id="${id}"`;
+    const query = `SELECT * FROM ${table} WHERE id='${id}'`;
     try {
       const result = await pool.queryParam(query);
       if (result.length === 0) {

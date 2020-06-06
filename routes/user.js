@@ -7,7 +7,7 @@ const encrypt = require("../modules/crypto");
 const statusCode = require("../modules/statusCode");
 const resMessage = require("../modules/responseMessage");
 const util = require("../modules/util");
-// const jwt = require('../modules/jwt');
+const jwt = require('../modules/jwt');
 
 router.post("/signup", async (req, res) => {
   const { id, password } = req.body;
@@ -25,7 +25,14 @@ router.post("/signup", async (req, res) => {
       .send(util.fail(statusCode.BAD_REQUEST, resMessage.ALREADY_ID));
     return;
   }
+<<<<<<< HEAD
   const { salt, hashed } = await encrypt.encrypt(password);
+=======
+  const {
+    salt,
+    hashed
+  } = await encrypt.encrypt(password);
+>>>>>>> 8d36b53a594cb9a72130ba66ef48a8e55fc7ee1a
   const idx = await UserModel.signup(id, hashed, salt);
 
   if (idx === -1) {
@@ -67,17 +74,17 @@ router.post("/signin", async (req, res) => {
       .send(util.fail(statusCode.BAD_REQUEST, resMessage.MISS_MATCH_PW));
   }
 
-  // console.log(user[0]);
   // 로그인 성공적으로 마쳤다면 - LOGIN_SUCCESS 전달
-  // const {token, _} = await jwt.sign(user[0]);
+  const {token, _} = await jwt.sign(user[0]);
 
   res.status(statusCode.OK).send(
     util.success(statusCode.OK, resMessage.LOGIN_SUCCESS, {
-      useridx: user[0],
+      token: token
     })
   );
 });
 
+<<<<<<< HEAD
 // 마이페이지 조회
 // 댓글, 좋아요 누른 뮤직 리스트 반환
 // router.get("/mypage", async (req, res) => {
@@ -93,4 +100,6 @@ router.post("/signin", async (req, res) => {
 //   .send(util.success(statusCode.OK, resMessage.COMMENTS_SUCCESS, {mpHeart: mpHeart, mpComments: mpComments}));
 // });
 
+=======
+>>>>>>> 8d36b53a594cb9a72130ba66ef48a8e55fc7ee1a
 module.exports = router;

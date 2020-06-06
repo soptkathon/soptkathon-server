@@ -14,5 +14,6 @@ router.use("/user", require("./user"));
 router.use("/music", require("./music"));
 router.use("/hearts", require("./hearts"));
 router.use("/comments", require("./comments"));
+router.use("/auth", require("./auth"));
 
 module.exports = router;

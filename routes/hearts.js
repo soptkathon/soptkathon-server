@@ -7,20 +7,21 @@ const statusCode = require("../modules/statusCode");
 const resMessage = require("../modules/responseMessage");
 const util = require("../modules/util");
 
-router.put("/hearts/:music_idx/:isChecked", async (req, res) => {
-  const { music_idx, isChecked } = req.params;
+router.put("/:musicIdx/:isChecked", async (req, res) => {
+  const { musicIdx, isChecked } = req.params;
 
-  if (!music_idx || !isChecked) {
+  if (!musicIdx || !isChecked) {
     res
       .status(statusCode.BAD_REQUEST)
       .send(util.fail(statusCode.BAD_REQUEST, resMessage.NULL_VALUE));
     return;
   }
 
+  console.log(1 - isChecked);
   try {
     const heartsUpdateResult = await musicModel.updateHearts(
-      music_idx,
-      isChecked
+      musicIdx,
+      1 - isChecked
     );
 
     return res
@@ -41,3 +42,4 @@ router.put("/hearts/:music_idx/:isChecked", async (req, res) => {
     throw err;
   }
 });
+module.exports = router;

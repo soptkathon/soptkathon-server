@@ -36,7 +36,6 @@ const user = {
       throw err;
     }
   },
-  signin: async (id, password) => {},
 };
 
 module.exports = user;

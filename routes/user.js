@@ -25,14 +25,7 @@ router.post("/signup", async (req, res) => {
       .send(util.fail(statusCode.BAD_REQUEST, resMessage.ALREADY_ID));
     return;
   }
-<<<<<<< HEAD
   const { salt, hashed } = await encrypt.encrypt(password);
-=======
-  const {
-    salt,
-    hashed
-  } = await encrypt.encrypt(password);
->>>>>>> 8d36b53a594cb9a72130ba66ef48a8e55fc7ee1a
   const idx = await UserModel.signup(id, hashed, salt);
 
   if (idx === -1) {
@@ -84,22 +77,4 @@ router.post("/signin", async (req, res) => {
   );
 });
 
-<<<<<<< HEAD
-// 마이페이지 조회
-// 댓글, 좋아요 누른 뮤직 리스트 반환
-// router.get("/mypage", async (req, res) => {
-//   const mpHeart = await UserModel.heartSearch();
-//   const mpComments = await UserModel.commentSearch();
-
-//   if (mpHeart.length < 1 && mpComments.length < 1) {
-//     return res.status(statusCode.BAD_REQUEST)
-//     .send(util.fail(statusCode.BAD_REQUEST, resMessage.NO_COMMENTS_DATA));
-//   }
-
-//   res.status(statusCode.OK)
-//   .send(util.success(statusCode.OK, resMessage.COMMENTS_SUCCESS, {mpHeart: mpHeart, mpComments: mpComments}));
-// });
-
-=======
->>>>>>> 8d36b53a594cb9a72130ba66ef48a8e55fc7ee1a
 module.exports = router;

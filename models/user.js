@@ -26,6 +26,7 @@ const user = {
     const query = `SELECT * FROM ${table} WHERE id='${id}';`;
     try {
       const result = await pool.queryParam(query);
+      console.log(result);
       return result;
     } catch (err) {
       if (err.errno == 1062) {

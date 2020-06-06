@@ -25,7 +25,6 @@ router.post("/signup", async (req, res) => {
       .send(util.fail(statusCode.BAD_REQUEST, resMessage.ALREADY_ID));
     return;
   }
-<<<<<<< HEAD
   // const {
   //   salt,
   //   hashed
@@ -35,9 +34,6 @@ router.post("/signup", async (req, res) => {
   const salt = crypto.pbkdf2Sync(32).toString('hex');
   const hashed = crypto.pbkdf2Sync(password, salt, 100000, 32, 'sha512').toString();
   
-=======
-  const { salt, hashed } = await encrypt.encrypt(password);
->>>>>>> 4e0bc17f315a5f4447bc164296df1de8dfc10f35
   const idx = await UserModel.signup(id, hashed, salt);
   
   if (idx === -1) {
@@ -96,11 +92,11 @@ router.post("/signin", async (req, res) => {
 
 // 마이페이지 조회 
 // 댓글, 좋아요 누른 뮤직 리스트 반환
-router.get("/myPage", async (req, res) => {
+router.get("/mypage", async (req, res) => {
   const mpHeart = await UserModel.heartSearch();
   const mpComments = await UserModel.commentSearch();
 
-  if (mpHeart.length < 1 || mpComments.length < 1) {
+  if (mpHeart.length < 1 && mpComments.length < 1) {
     return res.status(statusCode.BAD_REQUEST)
     .send(util.fail(statusCode.BAD_REQUEST, resMessage.NO_MYPAGE_DATA));
   }

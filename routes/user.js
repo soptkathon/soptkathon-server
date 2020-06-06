@@ -92,17 +92,18 @@ router.post("/signin", async (req, res) => {
 
 // 마이페이지 조회 
 // 댓글, 좋아요 누른 뮤직 리스트 반환
-router.get("/mypage", async (req, res) => {
-  const mpHeart = await UserModel.heartSearch();
-  const mpComments = await UserModel.commentSearch();
+// router.get("/mypage", async (req, res) => {
+//   const mpHeart = await UserModel.heartSearch();
+//   const mpComments = await UserModel.commentSearch();
 
-  if (mpHeart.length < 1 && mpComments.length < 1) {
-    return res.status(statusCode.BAD_REQUEST)
-    .send(util.fail(statusCode.BAD_REQUEST, resMessage.NO_MYPAGE_DATA));
-  }
+//   if (mpHeart.length < 1 && mpComments.length < 1) {
+//     return res.status(statusCode.BAD_REQUEST)
+//     .send(util.fail(statusCode.BAD_REQUEST, resMessage.NO_COMMENTS_DATA));
+//   }
 
-  res.status(statusCode.OK)
-  .send(util.success(statusCode.OK, resMessage.MYPAGE_SUCCESS, {mpHeart: mpHeart, mpComments: mpComments}));
-})
+//   res.status(statusCode.OK)
+//   .send(util.success(statusCode.OK, resMessage.COMMENTS_SUCCESS, {mpHeart: mpHeart, mpComments: mpComments}));
+// });
+
 
 module.exports = router;

@@ -36,6 +36,7 @@ const user = {
       throw err;
     }
   },
+  /*
   heartSearch : async () => {
     const query = `SELECT * FROM ${table2} WHERE isChecked = 1;`;
     try {
@@ -63,7 +64,7 @@ const user = {
       console.log("commentSearch ERROR : ", err);
       throw err;
     }
-  }
+  } */
 };
 
 module.exports = user;

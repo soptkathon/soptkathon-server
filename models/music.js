@@ -2,8 +2,8 @@ const pool = require("../modules/pool");
 const table = "music";
 
 const music = {
-    showList : async () => {
-    const query = `SELECT * FROM ${table}`;
+    showList : async (userIdx) => {
+    const query = `SELECT * FROM ${table};`;
     try {
       const result = await pool.queryParam(query);
       return result;

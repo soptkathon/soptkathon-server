@@ -1,6 +1,4 @@
 const pool = require("../modules/pool");
-const table = "user";
-const table2 = "music";
 const table3 = "comments";
 
 const comments = {

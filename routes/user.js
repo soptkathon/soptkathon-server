@@ -4,7 +4,7 @@ let util = require("../modules/util");
 let statusCode = require("../modules/statusCode");
 let resMessage = require("../modules/responseMessage");
 let encrypt = require("../modules/crypto");
-const User = reuqire("../models/user");
+const User = require("../models/user");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {

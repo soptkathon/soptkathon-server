@@ -18,5 +18,9 @@ module.exports = {
 
   // 뮤직리스트 조회
   NO_MUSICLIST: "리스트가 없습니다.",
-  SHOW_MUSICLIST_SUCCESS: "뮤직리스트 조회 성공"
+  SHOW_MUSICLIST_SUCCESS: "뮤직리스트 조회 성공",
+
+  // 마이페이지 조회
+  NO_MYPAGE_DATA: "데이터가 없습니다.",
+  MYPAGE_SUCCESS: "마이페이지 조회 성공"
 };

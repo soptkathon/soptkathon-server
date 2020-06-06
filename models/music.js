@@ -2,7 +2,7 @@ const pool = require("../modules/pool");
 const table = "music";
 
 const music = {
-    showList : async () => {
+  showList: async () => {
     const query = `SELECT * FROM ${table}`;
     try {
       const result = await pool.queryParam(query);
@@ -14,8 +14,8 @@ const music = {
       }
       console.log("checkUser ERROR : ", err);
       throw err;
-      }
-    },
-}
+    }
+  },
+};
 
 module.exports = music;

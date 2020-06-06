@@ -12,16 +12,16 @@ const util = require('../modules/util');
 router.post("/signup", async (req, res) => {
   const {
     id,
-    name,
     password
   } = req.body;
-  if (!id || !name || !password) {
+  if (!id || !password) {
     res.status(statusCode.BAD_REQUEST)
         .send(util.fail(statusCode.BAD_REQUEST, resMessage.NULL_VALUE));
     return;
   }
   // 사용중인 아이디가 있는지 확인
-  if (await UserModel.checkUser(id)) {
+  const result = await UserModel.checkUser(id);
+  if (result.length > 0) {
     res.status(statusCode.BAD_REQUEST)
         .send(util.fail(statusCode.BAD_REQUEST, resMessage.ALREADY_ID));
     return;
@@ -30,7 +30,7 @@ router.post("/signup", async (req, res) => {
     salt,
     hashed
   } = await encrypt.encrypt(password);
-  const idx = await UserModel.signup(id, name, hashed, salt);
+  const idx = await UserModel.signup(id, hashed, salt);
   if (idx === -1) {
     return res.status(statusCode.DB_ERROR)
         .send(util.fail(statusCode.DB_ERROR, resMessage.DB_ERROR));
@@ -57,6 +57,8 @@ router.post("/signin", async (req, res) => {
   // req의 Password 확인 - 틀렸다면 MISS_MATCH_PW 반납
   // encrypt 모듈 만들어놓은 거 잘 활용하기!
   const hashed = await encrypt.encryptWithSalt(password, user[0].salt);
+  console.log(hashed);
+  console.log(user[0]);
   if (hashed !== user[0].password) {
     return res.status(statusCode.BAD_REQUEST)
     .send(util.fail(statusCode.BAD_REQUEST, resMessage.MISS_MATCH_PW));

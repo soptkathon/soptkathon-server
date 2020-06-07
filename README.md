@@ -1,4 +1,6 @@
-# 쉼표
+# Not First, But Best
+
+## 쉼표
 
 - 사운즈 여행, 당신의 방을 여행 공간으로
 
@@ -23,6 +25,6 @@
 
 ![token](./public/img/token.png)
 
-## 중복가입도 안되요❗❗
+## 중복가입도 안돼요 ❗❗
 
 ![중복가입불가](./public/img/signup.png)
